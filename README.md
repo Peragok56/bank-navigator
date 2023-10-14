@@ -16,3 +16,12 @@
 ### Установка
    ```sh
    npm install -g expo-cli
+
+
+   ```sh
+   npm i
+
+### Запуск проекта
+
+   ```sh
+   npm start
