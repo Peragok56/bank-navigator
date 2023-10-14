@@ -11,6 +11,8 @@
 Перед началом работы убедитесь, что у вас установлены:
 
 - [Node.js](https://nodejs.org/) (рекомендуется LTS-версия)
-- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- Expo CLI. Если у вас его нет, вы можете установить его, выполнив следующую команду в командной строке:
 
 ### Установка
+   ```sh
+   npm install -g expo-cli
