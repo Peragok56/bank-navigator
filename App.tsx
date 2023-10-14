@@ -91,41 +91,41 @@ export default function App() {
 
   }
 
-  // useEffect(() => {
-  //   try {
-  //     storage.load({
-  //       key: 'token'
-  //     })
-  //     .then(res => {
-  //       console.log(res.expiresIn)
-  //       console.log(Date.now());
-  //       if (Date.now() > res.expiresIn) {
-  //         axios.get('/auth/refresh', {headers: {Authorization: `Bearer ${res.refresh_token}`}})
-  //         .then(res2 => {
-  //           console.log(res2.data)
-  //           storage.save({
-  //             key: 'token',
-  //             data: {
-  //               access_token: res2.data.accessToken,
-  //               refresh_token: res2.data.refreshToken,
-  //               expiresIn: Date.now() + (3600 * 24 * 1000)
-  //             }
-  //           })
-  //           setAuth(true)
-  //         })
-  //         .catch(err => {
-  //           console.log(err.response.data);
-  //         })
-  //       } else {
-  //         console.log('succsess');
-  //         setAuth(true)
-  //       }
-  //     })
-  //   } catch (error) {
-  //     console.log('hi')
-  //     console.log(error);
-  //   }
-  // }, [auth])
+  useEffect(() => {
+    try {
+      storage.load({
+        key: 'token'
+      })
+      .then(res => {
+        console.log(res.expiresIn)
+        console.log(Date.now());
+        if (Date.now() > res.expiresIn) {
+          axios.get('/auth/refresh', {headers: {Authorization: `Bearer ${res.refresh_token}`}})
+          .then(res2 => {
+            console.log(res2.data)
+            storage.save({
+              key: 'token',
+              data: {
+                access_token: res2.data.accessToken,
+                refresh_token: res2.data.refreshToken,
+                expiresIn: Date.now() + (3600 * 24 * 1000)
+              }
+            })
+            setAuth(true)
+          })
+          .catch(err => {
+            console.log(err.response.data);
+          })
+        } else {
+          console.log('succsess');
+          setAuth(true)
+        }
+      })
+    } catch (error) {
+      console.log('hi')
+      console.log(error);
+    }
+  }, [auth])
 
   return (
     <Provider store={store}>
